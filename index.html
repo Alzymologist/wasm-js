@@ -1,0 +1,32 @@
+<html><head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <link href='/rustcode/mainjs/main.css' rel='stylesheet' type='text/css' />
+
+    <script type="module">
+	import init, {greet, do_plays, do_resolutions, do_progress, btc} from '/rustcode/mainjs/wasm.js';
+        async function run() { await init('/rustcode/mainjs/wasm.wasm'); }
+        run();
+	window.greet=greet;
+	window.do_plays=do_plays;
+        window.do_resolutions=do_resolutions;
+        window.do_progress=do_progress;
+        window.btc=btc;
+    </script>
+
+    <script type='text/javascript' language='JavaScript' src='/rustcode/mainjs/main.js'></script>
+
+</head><body style='padding:30px'>
+<div id='globals' style='display:none'></div>
+
+<h2>RUST/JS Bridge</h2>
+
+<input type='text' size='60' id='mytext'> <input type='button' value='GREET' onclick="greet(idd('mytext').value)">
+
+<p><input type='button' value='play sound' onclick='do_plays()'>
+ &nbsp; <input type='button' value='resolutions' onclick='do_resolutions()'>
+ &nbsp; <input type='button' value='progress' onclick='do_progress()'>
+ &nbsp; <input type='button' value='Bitcoin' onclick='btc()'>
+
+<div id='BTC'></div>
+
+</body></html>
