@@ -3,7 +3,7 @@
     <link href='/rustcode/mainjs/main.css' rel='stylesheet' type='text/css' />
 
     <script type="module">
-	import init, {greet, do_plays, do_resolutions, do_progress, btc} from '/rustcode/mainjs/wasm.js';
+	import init, {greet, do_plays, do_resolutions, do_progress, btc, toclip} from '/rustcode/mainjs/wasm.js';
         async function run() { await init('/rustcode/mainjs/wasm.wasm'); }
         run();
 	window.greet=greet;
@@ -11,6 +11,7 @@
         window.do_resolutions=do_resolutions;
         window.do_progress=do_progress;
         window.btc=btc;
+        window.toclip=toclip;
     </script>
 
     <script type='text/javascript' language='JavaScript' src='/rustcode/mainjs/main.js'></script>
@@ -20,8 +21,8 @@
 
 <h2>RUST/JS Bridge</h2>
 
-<input type='text' size='60' id='mytext'> <input type='button' value='GREET' onclick="greet(idd('mytext').value)">
-
+<input type='text' size='30' id='mytext' value='test'> <input type='button' value='GREET' onclick="greet(idd('mytext').value)">
+ <input type='button' value='Clipboard' onclick="toclip(idd('mytext').value)">
 <p><input type='button' value='play sound' onclick='do_plays()'>
  &nbsp; <input type='button' value='resolutions' onclick='do_resolutions()'>
  &nbsp; <input type='button' value='progress' onclick='do_progress()'>

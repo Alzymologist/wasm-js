@@ -9,7 +9,13 @@ use crate::mainjs::*;
 #[wasm_bindgen]
 pub fn greet(name: &str) {
     // open window with some info for 1000 ms
-    salert(&format!("<b>{}</b>",name),1000);
+    salert(&format!("Alert 2 sec: <b>{}</b>",name),2000);
+}
+
+#[wasm_bindgen]
+pub fn toclip(name: &str) {
+    // copy to clipboard
+    cpbuf(name);
 }
 
 #[wasm_bindgen]
