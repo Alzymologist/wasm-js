@@ -726,7 +726,7 @@ function AJAX(url,opt,s) { if(!opt) opt={};
 	  xhr.send(formData);
 	} else xhr.send(s);
     } else xhr.send();
-    if(!async) return (xhr.statusText=='OK'?xhr.responseText:false);
+    if(!async) return ( xhr.status == 200 && xhr.readyState == 4 ?xhr.responseText:false);
   } catch(e) { if(!async) return false; }
 }
 

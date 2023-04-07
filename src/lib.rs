@@ -69,11 +69,13 @@ pub fn do_progress() {
 use serde_json::{Value};
 #[wasm_bindgen]
 pub fn btc() {
+
     let x: u32 = get("xbit").parse().unwrap_or(0) + 1;
     set("xbit", &x.to_string() );
 
-    let s: String = AGET("https://www.blockchain.com/ru/ticker").as_string().unwrap_or("".to_string());
-    let v: Value = serde_json::from_str(&s).unwrap();
+    let s: String = AGET("https://www.blockchain.com/ru/ticker").as_string().unwrap_or("{}".to_string());
+    let v: Value = serde_json::from_str(&s).unwrap_or("{null}".into());
+
     dobavil1("BTC", &format!("{:03}) BTC = {} USD", x, v["USD"]["last"]) );
 }
 
